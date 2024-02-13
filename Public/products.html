@@ -4,3 +4,36 @@
 בראש העמוד יש כפתור select  עם שני אפשרויות מיון: לפי שם או לפי מחיר, בחירה של אחת האפשרויות ולחיצה על כפתור "מיון" תמיין מחדש את המוצרים לפי הסדר שנבחר.
 בונוס: אפשר להוסיף אינפוט של טקסט, ומציאת מוצרים לפי התווים של השמות שלהם: לדוגמא: כתיבת ‘ba’, תציג את כל המוצרים שקיימת בהם המחרוזת ‘ba’. -->
 
+<!-- בעמוד בחירת המוצרים, יופיעו כל המוצרים השמורים במאגר המידע, כל אחד בדיב נפרד, עם המחיר ושם המוצר, לחיצה על המוצר תוסיף את המוצר למערך המוצרים שנבחרו.
+בראש העמוד יש כפתור select  עם שני אפשרויות מיון: לפי שם או לפי מחיר, בחירה של אחת האפשרויות ולחיצה על כפתור "מיון" תמיין מחדש את המוצרים לפי הסדר שנבחר.
+בונוס: אפשר להוסיף אינפוט של טקסט, ומציאת מוצרים לפי התווים של השמות שלהם: לדוגמא: כתיבת ‘ba’, תציג את כל המוצרים שקיימת בהם המחרוזת ‘ba’. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="mainDiv">
+        <h1>SV Shop</h1>
+        <div class="productsContainer">
+            <form>
+                <select class="byNamePrice" name="byNamePrice" onchange="getOption()">
+                    <option selected value="all">All</option>
+                    <option value="byName">by Name</option>
+                    <option value="byPrice">by Price</option>
+                </select>
+                <!-- products details פה מדפיסים את כל המוצרים  -->
+                <button id="toBuy" class="toBuy" onclick="toBuy()">buy</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
