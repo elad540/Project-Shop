@@ -20,7 +20,7 @@
         <h1>SV Shop</h1>
         <div class="signUpContainer">
             <h2>Sign Up</h2>
-            <form>
+            <form onsubmit="signup(event)">
                 <input id="name" placeholder="Name" type="text">
                 <input id="email" placeholder="Email" type="text">
                 <input id="password" placeholder="Password" type="password">
@@ -28,7 +28,8 @@
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="../src/storageService.js"></script>
+    <script src="../src/app.js"></script>
 </body>
 
 </html>
