@@ -11,7 +11,7 @@ body {
     position: relative;
 }
 
-.signInContainer {
+.signInContainer .signUpContainer .productsContainer {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
     padding: 30px;
@@ -51,6 +51,28 @@ input {
     cursor: pointer;
 }
 
+.signUp {
+    border-radius: 50px;
+    background-color: rgb(38, 163, 0);
+    color: white;
+    width: 100%;
+    height: 45px;
+    border: none;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.toBuy {
+    border-radius: 50px;
+    background-color: rgb(38, 163, 0);
+    color: white;
+    width: 100%;
+    height: 45px;
+    border: none;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
 .signUpB {
     border-radius: 50px;
     background-color: rgb(38, 163, 0);
@@ -80,4 +102,25 @@ h2 {
 p {
     margin-top: 10px;
     font-size: 14px;
+}
+
+.byNamePrice {
+    width: 70px;
+    border: 7px;
+    background-color: rgb(38, 163, 0);
+    margin-right: 220px;
+    margin-bottom: 9px;
+    height: 20px;
+}
+
+.nameOfProduct {
+    background-color: white;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    border: solid rgb(37, 82, 145) 1px;
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
 }
