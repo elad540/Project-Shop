@@ -5,6 +5,8 @@ const path = require("path")
 const userModule = require("./modules/userModule.js")
 const productsModule = require("./modules/productsModule.js")
 
+
+
 app.use(express.static("public"))
 app.use(express.json())
 
