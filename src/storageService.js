@@ -1,45 +1,37 @@
-"use strict"
+"use strict";
 
-const USER_KEY = "loggedInUser"
-const TODO_KEY = "todos"
+// Constants representing keys for local storage
+const USER_KEY = "loggedInUser";
+const SELECTED_PRODUCTS_KEY = "selectedProducts";
 
+// Object encapsulating methods for interacting with local storage
 const storageService = {
-  getTodos() {
-    const todos = JSON.parse(localStorage.getItem(TODO_KEY))
-    return todos || []
+  // Retrieve the selected products from local storage, or an empty array if not present
+  getSelectedProducts() {
+    const selectedProducts = JSON.parse(localStorage.getItem(SELECTED_PRODUCTS_KEY));
+    return selectedProducts || [];
   },
-  setTodos(todos) {
-    localStorage.setItem(TODO_KEY, JSON.stringify(todos))
+
+  // Store the provided selected products in local storage
+  setSelectedProducts(products) {
+    localStorage.setItem(SELECTED_PRODUCTS_KEY, JSON.stringify(products));
   },
-  addOneTodo(newTodo) {
-    const todos = this.getTodos()
-    todos.push(newTodo)
-    this.setTodos(todos)
-  },
-  removeOneTodo(todoId) {
-    const todos = this.getTodos()
-    const updatedTodos = todos.filter((todo) => todo._id !== todoId)
-    this.setTodos(updatedTodos)
-  },
+
+  // Retrieve user information from local storage, or null if not present
   getUser() {
-    const user = JSON.parse(localStorage.getItem(USER_KEY))
-    return user || null
+    const user = JSON.parse(localStorage.getItem(USER_KEY));
+    return user || null;
   },
+
+  // Store the provided user information in local storage
   setUser(user) {
-    localStorage.setItem(USER_KEY, JSON.stringify(user))
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
   },
+
+  // Remove both user and selected products information from local storage
   clearAll() {
-    localStorage.removeItem(USER_KEY)
-    localStorage.removeItem(TODO_KEY)
+    localStorage.removeItem(USER_KEY);
+    localStorage.removeItem(SELECTED_PRODUCTS_KEY);
   },
-  toggleDone(todoId) {
-    const todos = this.getTodos()
-    const updatedTodos = todos.map((todo) => {
-      if (todo._id === todoId) {
-        todo.isDone = !todo.isDone
-      }
-      return todo
-    })
-    this.setTodos(updatedTodos)
-  },
-}
+};
+
