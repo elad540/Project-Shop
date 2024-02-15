@@ -1,9 +1,5 @@
 const dotenv = require("dotenv")
 dotenv.config()
-<<<<<<< HEAD
-
-=======
->>>>>>> 2bce5d301b2e7933767aa52ff56063c738ac0d11
 const express = require("express")
 const app = express()
 const path = require("path")
