@@ -1,6 +1,6 @@
 const { MongoClient, ObjectId } = require("mongodb")
 
-const url = "YOUR_CONNECTION_STRING"
+const url = process.env.MONGO_URI
 const dbName = "svshop"
 
 const client = new MongoClient(url)
