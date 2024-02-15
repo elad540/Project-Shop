@@ -1,3 +1,5 @@
+const dotenv = require("dotenv")
+dotenv.config()
 
 const express = require("express")
 const app = express()
@@ -11,7 +13,7 @@ app.use(express.static("public"))
 app.use(express.json())
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "signin.html"))
+    res.sendFile(path.join(__dirname, "public", "signin.html"))
 })
 
 app.post("/api/signup", async (req, res) => {
