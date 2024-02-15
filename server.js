@@ -1,6 +1,9 @@
 const dotenv = require("dotenv")
 dotenv.config()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2bce5d301b2e7933767aa52ff56063c738ac0d11
 const express = require("express")
 const app = express()
 const path = require("path")
@@ -50,5 +53,5 @@ app.post("/api/buy", async (req, res) => {
 
 const PORT = 3000
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`)
+    console.log(`Server is running on https://localhost:${PORT}`)
 })
