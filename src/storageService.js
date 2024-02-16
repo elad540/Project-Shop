@@ -1,4 +1,5 @@
 "use strict";
+// This file contains the functions for app.js
 
 // Constants representing keys for local storage
 const USER_KEY = "loggedInUser";

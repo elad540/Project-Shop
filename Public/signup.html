@@ -1,9 +1,3 @@
-
-<!-- אם מייל המשתמש תפוס, תוצג alert בדפדפן של הלקוח והמשתמש לא ירשם במערכת, במידה והמייל פנוי,
-וכל השדות מולאו, הפרטים ירשמו בתוך הdb והמשתמש יועבר לעמוד ההתחברות. שם יוכל להכניס את הפרטים ולהתחבר למערכת, ולאחר מכן הוא יועבר לעמוד בחירת המוצרים. -->
-
-<!-- אם מייל המשתמש תפוס, תוצג alert בדפדפן של הלקוח והמשתמש לא ירשם במערכת, במידה והמייל פנוי,
-וכל השדות מולאו, הפרטים ירשמו בתוך הdb והמשתמש יועבר לעמוד ההתחברות. שם יוכל להכניס את הפרטים ולהתחבר למערכת, ולאחר מכן הוא יועבר לעמוד בחירת המוצרים. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,11 +14,11 @@
         <h1>SV Shop</h1>
         <div class="signUpContainer">
             <h2>Sign Up</h2>
-            <form onsubmit="signup(event)">
+            <form id="signupForm" onsubmit="signup(event)">
                 <input id="name" placeholder="Name" type="text">
                 <input id="email" placeholder="Email" type="text">
                 <input id="password" placeholder="Password" type="password">
-                <button id="signUp" class="signUp" onclick="signUp()">Sign Up</button>
+                <button id="signUp" class="signUp" onclick="signup(event)">Sign Up</button>
             </form>
         </div>
     </div>

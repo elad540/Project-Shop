@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="init()">
+    <button class="btn_logout" onclick="logout()"></button>
     <div id="mainDiv">
         <h1>SV Shop</h1>
         <div class="productsContainer">
@@ -26,14 +27,23 @@
                     <option selected value="all">All</option>
                     <option value="byName">by Name</option>
                     <option value="byPrice">by Price</option>
+                    <label for="searchInput">Search by name:</label>
+                    <input type="text" id="searchInput" oninput="searchProducts()">
+                    
                 </select>
-                <!-- products details פה מדפיסים את כל המוצרים  -->
+                <!-- products details פה יהיו את כל המוצרים  -->
+                <div class="product" id="couch" onclick="addToCart('A Couch', 200)">A Couch - 2000</div>
+                <div class="product" id="coffeeTable" onclick="addToCart('Coffee Table', 50)">Coffee Table - 50</div>
+                <div class="product" id="diningTable" onclick="addToCart('Dining Table', 150)">Dining Table - 1500</div>
+                <div class="product" id="kitchenIsland" onclick="addToCart('Kitchen Island', 120)">Kitchen Island - 1200</div>
+                <div class="product" id="outdoorSofa" onclick="addToCart('Outdoor Sofa', 250)">Outdoor Sofa - 500</div>
+ 
                 <button id="toBuy" class="toBuy" onclick="toBuy()">buy</button>
             </form>
         </div>
     </div>
     </div>
+    <script src="../src/storageService.js"></script>
+    <script src="../src/app.js"></script>
 </body>
-<script src="script.js"></script>
-
 </html>

@@ -11,6 +11,12 @@ body {
     position: relative;
 }
 
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
 .signInContainer .signUpContainer .productsContainer {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;

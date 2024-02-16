@@ -6,8 +6,6 @@ const path = require("path")
 const userModule = require("./modules/userModule.js")
 const productsModule = require("./modules/productsModule.js")
 
-
-
 app.use(express.static("public"))
 app.use(express.json())
 
@@ -26,7 +24,7 @@ app.post("/api/signup", async (req, res) => {
     }
 })
 
-app.post("/api/login", async (req, res) => {
+app.post("/api/signin", async (req, res) => {
     try {
         const { username } = req.body
         const user = await userModule.getUserByUsername(username)
@@ -39,8 +37,8 @@ app.post("/api/login", async (req, res) => {
 
 app.post("/api/buy", async (req, res) => {
     try {
-        const newProduct = await productsModule.addProduct(req.body)
-        return res.send({ success: true, products: newProduct })
+        const newOrder = await ordersModule.placeOrder(userId, productId, quantity)
+        return res.send({ success: true, products: newOrder })
     } catch (error) {
         return res.status(400).send({ success: false, message: error.message })
     }

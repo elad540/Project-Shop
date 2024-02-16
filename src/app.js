@@ -56,7 +56,7 @@ async function signup(event) {
     const credentials = { username, password, email };
 
     // Send signup request to server
-    const response = await fetch("/api/register", {
+    const response = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(credentials),
@@ -99,7 +99,7 @@ async function renderProducts() {
 
     // Render products on the product selection page
     const products = data.products;
-    renderProductList(products);
+    renderProductList(data);
   } catch (error) {
     console.log(error);
   }
@@ -161,7 +161,99 @@ function logout() {
   // Clear user and selected products information from local storage
   storageService.clearAll();
   // Redirect to login page
-  window.location.href = "/login.html";
+  window.location.href = "/signin.html";
+}
+
+// Finding products by name
+function searchProducts() {
+  var searchInput = document.getElementById('searchInput').value.toLowerCase();
+  var products = document.querySelectorAll('.product');
+
+  products.forEach(function(product) {
+      var productName = product.textContent.toLowerCase();
+      if (productName.includes(searchInput)) {
+          product.style.display = 'block';
+      } else {
+          product.style.display = 'none';
+      }
+  });
+}
+
+function displayCheckoutInfo() {
+  const selectedProducts = storageService.getSelectedProducts();
+  const totalAmountElement = document.getElementById("totalAmount");
+  let totalAmount = 0;
+
+  // Display selected products
+  const selectedProductsContainer = document.getElementById("selectedProductsContainer");
+  selectedProductsContainer.innerHTML = ""; // Clear previous content
+
+  selectedProducts.forEach(product => {
+      const productDiv = document.createElement("div");
+      productDiv.textContent = `${product.name} - $${product.price.toFixed(2)}`;
+      selectedProductsContainer.appendChild(productDiv);
+
+      // Calculate total amount
+      totalAmount += product.price;
+  });
+
+   // Display total amount
+   totalAmountElement.textContent = totalAmount.toFixed(2);
+}
+
+async function confirmPurchase() {
+  try {
+      const selectedProducts = storageService.getSelectedProducts();
+
+      // Check if there are any selected products
+      if (selectedProducts.length === 0) {
+          alert("No products selected for purchase.");
+          return;
+      }
+
+      // Fetch user information from local storage
+      const user = storageService.getUser();
+      if (!user) {
+          alert("User not logged in. Please log in before making a purchase.");
+          return;
+      }
+
+      // Prepare data for the purchase request
+      const purchaseData = {
+          userId: user._id,
+          products: selectedProducts.map(product => ({
+              productId: product._id,
+              quantity: 1, // Assuming quantity is 1 for simplicity
+          })),
+      };
+
+      // Send purchase request to the server
+      const response = await fetch("/api/buy", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(purchaseData),
+      });
+
+      // Parse server response
+      const data = await response.json();
+
+      // Handle unsuccessful purchase
+      if (!data.success) {
+          alert("Purchase failed. Please try again.");
+          return;
+      }
+
+      // Clear selected products after successful purchase
+      storageService.setSelectedProducts([]);
+
+      // Redirect to the product selection page
+      window.location.href = "/products.html";
+  } catch (error) {
+      console.log(error);
+      alert("An error occurred. Please try again later.");
+  }
 }
 
 // Call the init function when the page is loaded
