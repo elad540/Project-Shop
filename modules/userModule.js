@@ -10,7 +10,7 @@ async function addUser(email, username, password) {
     const existUser = await collection.findOne({ username })
 
     if (existUser) {
-      throw new Error("User already exist")
+      throw new Error("User already exist😢")
     }
 
     await collection.insertOne({ username, password, email })
@@ -24,7 +24,7 @@ async function getUserByUsername(username) {
   try {
     const collection = await getCollection(entity)
     const user = await collection.findOne({ username })
-    if (!user) throw new Error("User not found")
+    if (!user) throw new Error("User not found😢")
     const { password, ...restUserDetails } = user
     return restUserDetails
   } catch (error) {

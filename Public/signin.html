@@ -11,15 +11,16 @@
         <h1>SV Shop</h1>
         <div class="signInContainer">
             <h2>Sign In</h2>
-            <form>
+            <form onsubmit="login(event)">
                 <input id="username" placeholder="Username" type="text"> 
                 <input id="password" placeholder="Password" type="password">
-                <button id="signInB" class="signInB" onclick="login()">Sign In</button> 
+                <button id="signInB" class="signInB">Sign In</button> 
             </form>
             <p>Don't have an account? <a href="signup.html"><button class="signUpB">Sign Up</button></a></p> 
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="../src/storageService.js"></script>
+    <script src="../src/app.js"></script>
 </body>
 </html>
 <!-- 
