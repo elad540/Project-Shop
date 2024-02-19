@@ -89,6 +89,7 @@ input {
 
     cursor: pointer;
 }
+
 .btn_logout {
     border-radius: 50px;
     background-color: rgb(163, 0, 0);
@@ -96,7 +97,7 @@ input {
     width: 10%;
     height: 45px;
     border: none;
-    
+
     cursor: pointer;
 }
 
@@ -139,4 +140,11 @@ p {
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box;
+}
+
+.product {
+    width: 250px;
+    height: 30px;
+    border-radius: 5%;
+    border: 2px solid green;
 }
