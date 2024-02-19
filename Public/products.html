@@ -4,9 +4,6 @@
 בראש העמוד יש כפתור select  עם שני אפשרויות מיון: לפי שם או לפי מחיר, בחירה של אחת האפשרויות ולחיצה על כפתור "מיון" תמיין מחדש את המוצרים לפי הסדר שנבחר.
 בונוס: אפשר להוסיף אינפוט של טקסט, ומציאת מוצרים לפי התווים של השמות שלהם: לדוגמא: כתיבת ‘ba’, תציג את כל המוצרים שקיימת בהם המחרוזת ‘ba’. -->
 
-<!-- בעמוד בחירת המוצרים, יופיעו כל המוצרים השמורים במאגר המידע, כל אחד בדיב נפרד, עם המחיר ושם המוצר, לחיצה על המוצר תוסיף את המוצר למערך המוצרים שנבחרו.
-בראש העמוד יש כפתור select  עם שני אפשרויות מיון: לפי שם או לפי מחיר, בחירה של אחת האפשרויות ולחיצה על כפתור "מיון" תמיין מחדש את המוצרים לפי הסדר שנבחר.
-בונוס: אפשר להוסיף אינפוט של טקסט, ומציאת מוצרים לפי התווים של השמות שלהם: לדוגמא: כתיבת ‘ba’, תציג את כל המוצרים שקיימת בהם המחרוזת ‘ba’. -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,15 +29,13 @@
                     
                 </select>
                 <!-- products details פה יהיו את כל המוצרים  -->
-                <div class="product" id="couch" onclick="addToCart('A Couch', 200)">A Couch - 2000</div>
+                <div class="product" id="couch" onclick="addToCart('A Couch', 2000)">A Couch - 2000</div>
                 <div class="product" id="coffeeTable" onclick="addToCart('Coffee Table', 50)">Coffee Table - 50</div>
-                <div class="product" id="diningTable" onclick="addToCart('Dining Table', 150)">Dining Table - 1500</div>
-                <div class="product" id="kitchenIsland" onclick="addToCart('Kitchen Island', 120)">Kitchen Island - 1200</div>
-                <div class="product" id="outdoorSofa" onclick="addToCart('Outdoor Sofa', 250)">Outdoor Sofa - 500</div>
-                <div class="product" id="outdoorSofa" onclick="addToCart('Outdoor Sofa', 250)">Outdoor Sofa - 500</div>
-                <div class="product" id="outdoorSofa" onclick="addToCart('Outdoor Sofa', 250)">Outdoor Sofa - 500</div>
-                <div class="product" id="outdoorSofa" onclick="addToCart('Outdoor Sofa', 250)">Outdoor Sofa - 500</div>
-                <button id="toBuy" class="toBuy" onclick="toBuy()">buy</button>
+                <div class="product" id="diningTable" onclick="addToCart('Dining Table', 1500)">Dining Table - 1500</div>
+                <div class="product" id="kitchenIsland" onclick="addToCart('Kitchen Island', 1200)">Kitchen Island - 1200</div>
+                <div class="product" id="outdoorSofa" onclick="addToCart('Outdoor Sofa', 500)">Outdoor Sofa - 500</div>
+                
+                <a href="buy.html" id="toBuy" class="toBuy">Buy</a>
             </form>
         </div>
     </div>
