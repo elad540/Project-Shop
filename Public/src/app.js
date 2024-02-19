@@ -77,11 +77,12 @@ async function init() {
   // Retrieve user information from local storage
   const user = storageService.getUser();
 
-  // Redirect to login page if user is not logged in
-  if (!user) {
-    window.location.href = "/signin.html";
-    return;
-  }
+  // סימנתי את השורות האלה כהערה לבינתיים:
+  // // Redirect to login page if user is not logged in
+  // if (!user) {
+  //   window.location.href = "/signin.html";
+  //   return;
+  // }
 
   // Fetch and render products from the server
   await renderProducts();
