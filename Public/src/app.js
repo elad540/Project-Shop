@@ -182,9 +182,12 @@ function searchProducts() {
 }
 
 function displayCheckoutInfo() {
+  console.log("displayCheckoutInfo called");
   const selectedProducts = storageService.getSelectedProducts();
   const totalAmountElement = document.getElementById("totalAmount");
+  const totalProductsElement = document.getElementById("totalProducts"); 
   let totalAmount = 0;
+  let totalProducts = 0; 
 
   // Display selected products
   const selectedProductsContainer = document.getElementById("selectedProductsContainer");
@@ -197,11 +200,20 @@ function displayCheckoutInfo() {
 
     // Calculate total amount
     totalAmount += product.price * product.count;
+
+    // Calculate total products
+    totalProducts += product.count; 
+    console.log("Total Products:", totalProducts);
+    console.log("Total Amount:", totalAmount);
+
   });
 
-  // Display total amount
-  totalAmountElement.textContent = totalAmount.toFixed(2);
+  // Display total amount and total products
+  totalAmountElement.textContent = `₪${totalAmount.toFixed(2)}`;
+  totalProductsElement.textContent = totalProducts; 
 }
+
+
 
 async function confirmPurchase() {
   try {
