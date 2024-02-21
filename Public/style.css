@@ -77,6 +77,7 @@ input {
     border: none;
     margin-bottom: 15px;
     cursor: pointer;
+    font-size: large;
 }
 
 .signUpB {
@@ -147,4 +148,22 @@ p {
     height: 30px;
     border-radius: 5%;
     border: 2px solid green;
+}
+
+#totalsProducts {
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#totalPrice {
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#confirmPurchase {
+    width: 260px;
+    height: 45px;
+    border-radius: 5%;
+    border: 1px solid green;
+    background-color: rgb(38, 163, 0);
 }
