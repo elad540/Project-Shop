@@ -127,7 +127,7 @@ function renderProductList(products) {
     // Button to add the product to the selected list
     const addButton = document.createElement("button");
     addButton.textContent = "Add to Cart";
-    addButton.onclick = () => addToCart(product._id, product.name);
+    addButton.onclick = () => addToCart(product._id, product.name, product.price);
 
     // Append elements to the product div
     productDiv.appendChild(productName);
@@ -140,7 +140,7 @@ function renderProductList(products) {
 }
 
 // Function to add a product to the selected list
-function addToCart(productId, productName) {
+function addToCart(productId, productName, productPrice) {
   const selectedProducts = storageService.getSelectedProducts();
 
   // Check if the product is already in the selected list
@@ -148,12 +148,13 @@ function addToCart(productId, productName) {
 
   if (!existingProduct) {
     // If not, add the product to the selected list
-    const newProduct = { _id: productId, name: productName };
+    const newProduct = { _id: productId, name: productName, price: productPrice, count: 1 };
     storageService.setSelectedProducts([...selectedProducts, newProduct]);
     alert(`Product '${productName}' added to the cart!`);
   } else {
-    // If already in the list, show an alert
-    alert(`Product '${productName}' is already in the cart!`);
+    // If already in the list, increment the count
+    existingProduct.count++;
+    alert(`Product '${productName}' count increased to ${existingProduct.count}`);
   }
 }
 
@@ -181,9 +182,12 @@ function searchProducts() {
 }
 
 function displayCheckoutInfo() {
+  console.log("displayCheckoutInfo called");
   const selectedProducts = storageService.getSelectedProducts();
   const totalAmountElement = document.getElementById("totalAmount");
+  const totalProductsElement = document.getElementById("totalProducts");
   let totalAmount = 0;
+  let totalProducts = 0;
 
   // Display selected products
   const selectedProductsContainer = document.getElementById("selectedProductsContainer");
@@ -191,16 +195,21 @@ function displayCheckoutInfo() {
 
   selectedProducts.forEach(product => {
     const productDiv = document.createElement("div");
-    productDiv.textContent = `${product.name} - $${product.price.toFixed(2)}`;
+    productDiv.textContent = `${product.name} - ₪${(product.price * product.count).toFixed(2)} * ${product.count}`;
     selectedProductsContainer.appendChild(productDiv);
 
     // Calculate total amount
-    totalAmount += product.price;
+    totalAmount += product.price * product.count;
+
+    // Calculate total products
+    totalProducts += product.count;
   });
 
-  // Display total amount
-  totalAmountElement.textContent = totalAmount.toFixed(2);
+  // Display total amount and total products
+  totalAmountElement.textContent = `₪${totalAmount.toFixed(2)}`;
+  totalProductsElement.textContent = totalProducts;
 }
+
 
 async function confirmPurchase() {
   try {
@@ -224,7 +233,7 @@ async function confirmPurchase() {
       userId: user._id,
       products: selectedProducts.map(product => ({
         productId: product._id,
-        quantity: 1, // Assuming quantity is 1 for simplicity
+        quantity: product.count,
       })),
     };
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="displayCheckoutInfo()">
+<body>
     <div id="mainDiv">
         <h1>SV Shop</h1>
         <div class="checkoutContainer">
@@ -16,12 +16,15 @@
             <div id="selectedProductsContainer">
                
             </div>
-            <p>Total: $<span id="totalAmount">0.00</span></p>
+            <p>Total products: ₪<span id="totalProducts"></span></p>
+            <p>Total price: ₪<span id="totalAmount"></span></p>
             <button id="confirmPurchase" onclick="confirmPurchase()">Confirm Purchase</button>
+            
         </div>
     </div>
-    <script src="../src/storageService.js"></script>
-    <script src="../src/app.js"></script>
+    <script src="./src/storageService.js"></script>
+    <script src="./src/app.js"></script>
+    <script>displayCheckoutInfo()</script>
 </body>
 
 </html>
