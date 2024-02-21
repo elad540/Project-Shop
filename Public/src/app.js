@@ -119,7 +119,7 @@ function init() {
  renderProducts()
 }
 // Function to add a product to the selected list
-function addToCart(productName, productPrice, productId) {
+function addToCart(productId, productName, productPrice) {
   const selectedProducts = storageService.getSelectedProducts();
   const newCartItem = {
     name: productName,
