@@ -185,9 +185,9 @@ function displayCheckoutInfo() {
   console.log("displayCheckoutInfo called");
   const selectedProducts = storageService.getSelectedProducts();
   const totalAmountElement = document.getElementById("totalAmount");
-  const totalProductsElement = document.getElementById("totalProducts"); 
+  const totalProductsElement = document.getElementById("totalProducts");
   let totalAmount = 0;
-  let totalProducts = 0; 
+  let totalProducts = 0;
 
   // Display selected products
   const selectedProductsContainer = document.getElementById("selectedProductsContainer");
@@ -195,24 +195,20 @@ function displayCheckoutInfo() {
 
   selectedProducts.forEach(product => {
     const productDiv = document.createElement("div");
-    productDiv.textContent = `${product.name} - $${product.price.toFixed(2)} * ${product.count}`;
+    productDiv.textContent = `${product.name} - ₪${(product.price * product.count).toFixed(2)} * ${product.count}`;
     selectedProductsContainer.appendChild(productDiv);
 
     // Calculate total amount
     totalAmount += product.price * product.count;
 
     // Calculate total products
-    totalProducts += product.count; 
-    console.log("Total Products:", totalProducts);
-    console.log("Total Amount:", totalAmount);
-
+    totalProducts += product.count;
   });
 
   // Display total amount and total products
   totalAmountElement.textContent = `₪${totalAmount.toFixed(2)}`;
-  totalProductsElement.textContent = totalProducts; 
+  totalProductsElement.textContent = totalProducts;
 }
-
 
 
 async function confirmPurchase() {
