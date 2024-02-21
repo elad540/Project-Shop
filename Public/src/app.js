@@ -165,7 +165,10 @@ function logout() {
   // Redirect to login page
   window.location.href = "/signin.html";
 }
-
+function confirmPurchase() {
+  storageService.clearAll();
+  window.location.href = "/signin.html";
+}
 // Finding products by name
 function searchProducts() {
   var searchInput = document.getElementById('searchInput').value.toLowerCase();
