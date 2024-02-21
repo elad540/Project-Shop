@@ -7,6 +7,7 @@
     <title>Products</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body onload="init()">
     <button class="btn_logout" onclick="logout()"> logout </button>
     <div id="mainDiv">
@@ -18,12 +19,13 @@
                     <option value="byName">by Name</option>
                     <option value="byPrice">by Price</option>
                 </select>
+                </br>
                 <label for="searchInput">Search by name:</label>
                 <input type="text" id="searchInput" oninput="searchProducts()">
                 <div class="prodsList"> </div>
 
-                </div>
-                <a href="buy.html" id="toBuy" class="toBuy">Buy</a>
+
+                <button class="btn_buy" onclick="toBuy()"> buy </button>
             </div>
         </div>
     </div>
@@ -31,4 +33,5 @@
     <script src="./src/storageService.js"></script>
     <script src="./src/app.js"></script>
 </body>
+
 </html>

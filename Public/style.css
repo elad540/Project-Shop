@@ -68,6 +68,7 @@ input {
     cursor: pointer;
 }
 
+/* 
 #toBuy {
     border-radius: 50px;
     background-color: rgb(38, 163, 0);
@@ -77,7 +78,7 @@ input {
     border: none;
     margin-bottom: 15px;
     cursor: pointer;
-}
+} */
 
 .signUpB {
     border-radius: 50px;
@@ -121,30 +122,45 @@ p {
     font-size: 14px;
 }
 
-.byNamePrice {
-    width: 70px;
-    border: 7px;
-    background-color: rgb(38, 163, 0);
-    margin-right: 220px;
-    margin-bottom: 9px;
-    height: 20px;
-}
-
-.nameOfProduct {
-    background-color: white;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    border: solid rgb(37, 82, 145) 1px;
-    border-radius: 8px;
-    height: 40px;
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-}
 
 .product {
-    width: 250px;
-    height: 30px;
-    border-radius: 5%;
+    width: 350px;
+    height: 25px;
+    border-radius: 3%;
     border: 2px solid green;
+}
+
+.byNamePrice {
+    width: 80px;
+    height: 23px;
+    margin-bottom: 15px;
+    background-color: green;
+    border-radius: 3%;
+}
+
+#confirmPurchase {
+    background-color: green;
+    color: black;
+    border-radius: 4%;
+    border: 1px solid green;
+    width: 200px;
+    height: 35px;
+}
+
+#totalPrice {
+    font-size: large;
+}
+
+#totalsProducts {
+    font-size: large;
+
+}
+
+.btn_buy {
+    width: 380px;
+    height: 37px;
+    background-color: green;
+    border-radius: 15px;
+    border: 1px solid green;
+    margin-top: 12px;
 }
