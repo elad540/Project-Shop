@@ -140,7 +140,7 @@ function renderProductList(products) {
 }
 
 // Function to add a product to the selected list
-function addToCart(productId, productName, productPrice) {
+function addToCart(productName, productPrice, productId) {
   const selectedProducts = storageService.getSelectedProducts();
 
   // Check if the product is already in the selected list
