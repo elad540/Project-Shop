@@ -34,3 +34,4 @@ async function getUserByUsername(username) {
 }
 
 module.exports = { addUser, getUserByUsername }
+

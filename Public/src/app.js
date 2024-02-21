@@ -229,7 +229,7 @@ async function confirmPurchase() {
     };
 
     // Send purchase request to the server
-    const response = await fetch("/api/buy", {
+    const response = await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -259,3 +259,8 @@ async function confirmPurchase() {
 
 // Call the init function when the page is loaded
 window.onload = init;
+
+
+function toBuy() {
+  window.location.href("/buy.html")
+}

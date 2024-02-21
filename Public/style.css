@@ -68,7 +68,7 @@ input {
     cursor: pointer;
 }
 
-.toBuy {
+#toBuy {
     border-radius: 50px;
     background-color: rgb(38, 163, 0);
     color: white;

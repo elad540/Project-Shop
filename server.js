@@ -35,7 +35,7 @@ app.post("/api/signin", async (req, res) => {
     }
 })
 
-app.post("/api/buy", async (req, res) => {
+app.post("/api/products", async (req, res) => {
     try {
         const newOrder = await ordersModule.placeOrder(userId, productId, quantity)
         return res.send({ success: true, products: newOrder })
@@ -43,7 +43,14 @@ app.post("/api/buy", async (req, res) => {
         return res.status(400).send({ success: false, message: error.message })
     }
 })
-
+app.post("/api/buy", async (req, res) => {
+    try {
+        // const newOrder = await ordersModule.placeOrder(userId, productId, quantity)
+        return res.send({ success: true, products: newOrder })
+    } catch (error) {
+        return res.status(400).send({ success: false, message: error.message })
+    }
+})
 
 const PORT = 3000
 app.listen(PORT, () => {
