@@ -1,5 +1,39 @@
 "use strict";
 
+const gProducts = [
+  {
+    id: 1, 
+    name: "A Couch",
+    price: 2000,
+  },
+  {
+    id: 2, 
+    name: "Coffee Table",
+    price: 50,
+  },{
+    id: 3, 
+    name: "Dining Table",
+    price: 1500,
+  },{
+    id: 4, 
+    name: "Kitchen Island",
+    price: 1200,
+  },{
+    id: 5, 
+    name: "Outdoor Sofa",
+    price: 500,
+  },
+]
+
+function renderProducts() {
+  const strHTMLS = gProducts.map(product => {
+    return `
+    <div class="product ${product.id}"  onclick="addToCart('${product.name}',${product.price})">${product.name} - ${product.price}</div>
+    `
+  })
+  document.querySelector(".prodsList").innerHTML = strHTMLS.join("")
+}
+
 // Function to handle user login
 async function login(event) {
   try {
@@ -73,89 +107,28 @@ async function signup(event) {
 }
 
 // Function to initialize the application
-async function init() {
+function init() {
   // Retrieve user information from local storage
   const user = storageService.getUser();
 
-  // סימנתי את השורות האלה כהערה לבינתיים:
-  // // Redirect to login page if user is not logged in
-  // if (!user) {
-  //   window.location.href = "/signin.html";
-  //   return;
-  // }
-
-  // Fetch and render products from the server
-  await renderProducts();
-}
-
-// Function to fetch and render products
-async function renderProducts() {
-  try {
-    // Fetch products from the server
-    const response = await fetch("/products.html");
-    const data = await response.json();
-
-    // Handle unsuccessful server response
-    if (!data.success) return alert(data.message);
-
-    // Render products on the product selection page
-    const products = data.products;
-    renderProductList(data);
-  } catch (error) {
-    console.log(error);
+  // Redirect to login page if user is not logged in
+  if (!user) {
+    window.location.href = "/signin.html";
+    return;
   }
+ renderProducts()
 }
-
-// Function to render the product list on the webpage
-function renderProductList(products) {
-  const productListContainer = document.getElementById("productList");
-
-  // Clear previous content
-  productListContainer.innerHTML = "";
-
-  // Iterate through products and create HTML elements
-  products.forEach((product) => {
-    const productDiv = document.createElement("div");
-    productDiv.className = "product-item";
-
-    const productName = document.createElement("p");
-    productName.textContent = product.name;
-
-    const productPrice = document.createElement("p");
-    productPrice.textContent = `Price: $${product.price.toFixed(2)}`;
-
-    // Button to add the product to the selected list
-    const addButton = document.createElement("button");
-    addButton.textContent = "Add to Cart";
-    addButton.onclick = () => addToCart(product._id, product.name, product.price);
-
-    // Append elements to the product div
-    productDiv.appendChild(productName);
-    productDiv.appendChild(productPrice);
-    productDiv.appendChild(addButton);
-
-    // Append the product div to the container
-    productListContainer.appendChild(productDiv);
-  });
-}
-
 // Function to add a product to the selected list
 function addToCart(productName, productPrice, productId) {
   const selectedProducts = storageService.getSelectedProducts();
-
-  // Check if the product is already in the selected list
-  const existingProduct = selectedProducts.find((product) => product._id === productId);
-
-  if (!existingProduct) {
-    // If not, add the product to the selected list
-    const newProduct = { _id: productId, name: productName, price: productPrice, count: 1 };
-    storageService.setSelectedProducts([...selectedProducts, newProduct]);
-    alert(`Product '${productName}' added to the cart!`);
-  } else {
-    // If already in the list, increment the count
-    existingProduct.count++;
-    alert(`Product '${productName}' count increased to ${existingProduct.count}`);
+  const newCartItem = {
+    name: productName,
+    price: productPrice,
   }
+  selectedProducts.push(newCartItem)
+
+  storageService.setSelectedProducts([...selectedProducts]);
+  alert(`Product '${productName}' added to the cart!`);
 }
 
 // Function to handle user logout
@@ -185,34 +158,33 @@ function searchProducts() {
 }
 
 function displayCheckoutInfo() {
-  console.log("displayCheckoutInfo called");
-  const selectedProducts = storageService.getSelectedProducts();
-  const totalAmountElement = document.getElementById("totalAmount");
-  const totalProductsElement = document.getElementById("totalProducts");
-  let totalAmount = 0;
-  let totalProducts = 0;
+    console.log("displayCheckoutInfo called");
+    const selectedProducts = storageService.getSelectedProducts();
+    let totalAmount = 0;
+    let totalProducts = 0;
 
-  // Display selected products
-  const selectedProductsContainer = document.getElementById("selectedProductsContainer");
-  selectedProductsContainer.innerHTML = ""; // Clear previous content
+    // Display selected products
+    const selectedProductsContainer = document.getElementById("selectedProductsContainer");
+    selectedProductsContainer.innerHTML = ""; // Clear previous content
 
-  selectedProducts.forEach(product => {
-    const productDiv = document.createElement("div");
-    productDiv.textContent = `${product.name} - ₪${(product.price * product.count).toFixed(2)} * ${product.count}`;
-    selectedProductsContainer.appendChild(productDiv);
+    selectedProducts.forEach(product => {
+        const productDiv = document.createElement("div");
+        productDiv.textContent = `${product.name} - ₪${(+product.price).toFixed(2)}`;
+        selectedProductsContainer.appendChild(productDiv);
 
-    // Calculate total amount
-    totalAmount += product.price * product.count;
+        // Calculate total price
+        totalAmount += +product.price;
 
-    // Calculate total products
-    totalProducts += product.count;
-  });
+        // Calculate total products
+        totalProducts += 1;
+    });
 
-  // Display total amount and total products
-  totalAmountElement.textContent = `₪${totalAmount.toFixed(2)}`;
-  totalProductsElement.textContent = totalProducts;
+    // Display total amount and total products
+    const totalAmountElement = document.getElementById("totalAmount");
+    const totalProductsElement = document.getElementById("totalProducts");
+    totalAmountElement.textContent = `₪${totalAmount.toFixed(2)}`;
+    totalProductsElement.textContent = totalProducts;
 }
-
 
 async function confirmPurchase() {
   try {
@@ -268,10 +240,6 @@ async function confirmPurchase() {
     alert("An error occurred. Please try again later.");
   }
 }
-
-// Call the init function when the page is loaded
-window.onload = init;
-
 
 function toBuy() {
   window.location.href("/buy.html")
