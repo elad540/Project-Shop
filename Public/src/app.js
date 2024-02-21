@@ -57,7 +57,7 @@ async function login(event) {
 
     const loggedInUser = data.user;
     storageService.setUser(loggedInUser);
-    window.location.href = "/products.html"; 
+    window.location.href = "/products.html";
   } catch (error) {
     console.log(error);
     alert(error.message);
@@ -95,7 +95,7 @@ async function signup(event) {
 function init() {
   const user = storageService.getUser();
 
-  
+
   if (!user) {
     window.location.href = "/signin.html";
     return;
@@ -142,9 +142,9 @@ function displayCheckoutInfo() {
   let totalAmount = 0;
   let totalProducts = 0;
 
-  
+
   const selectedProductsContainer = document.getElementById("selectedProductsContainer");
-  selectedProductsContainer.innerHTML = ""; 
+  selectedProductsContainer.innerHTML = "";
 
   selectedProducts.forEach(product => {
     const productDiv = document.createElement("div");
@@ -210,7 +210,3 @@ async function confirmPurchase() {
 }
 
 
-function toBuy() {
-  storageService.clearAll();
-  window.location.href = "/buy.html";
-}
