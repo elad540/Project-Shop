@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title >Products</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
 <body onload="init()">
     <button class="btn_logout" onclick="logout()"> logout </button>
     <div id="mainDiv">
-        <h1>SV Shop</h1>
+        <h1 class="animatedMainTitle">SV Shop</h1>
+        <br></br>
         <div class="productsContainer">
             <div>
                 <select class="byNamePrice" name="byNamePrice" onchange="getOption()">
@@ -23,7 +25,7 @@
                 <label for="searchInput">Search by name:</label>
                 <input type="text" id="searchInput" oninput="searchProducts()">
                 <div class="prodsList"> </div>
-                <a href="buy.html" class="btn_buy">to buy</a>
+                <a href="buy.html" class="btn_buy">Buy</a>
             </div>
         </div>
     </div>
